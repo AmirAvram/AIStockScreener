@@ -9,7 +9,7 @@ from models import StocksReport
 from utils import generate_agent, generate_runner, get_intraday_technicals, exit_loop
 
 
-async def debug_stocks_run(date: str) -> None:
+async def run_pipeline(date: str) -> None:
     stocks_search_agent = generate_agent(
         name="StocksSearchAgent",
         description="An agent that fetches stocks from google search.",
@@ -158,4 +158,4 @@ async def debug_stocks_run(date: str) -> None:
 if __name__ == "__main__":
     event_loop = asyncio.get_event_loop()
     ny_date = datetime.now(ZoneInfo("America/New_York")).date()
-    event_loop.run_until_complete(debug_stocks_run(ny_date.strftime("%Y-%m-%d")))
+    event_loop.run_until_complete(run_pipeline(ny_date.strftime("%Y-%m-%d")))
